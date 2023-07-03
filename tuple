@@ -2,6 +2,22 @@ mytuple=('apple','orange','banana')
 
 mylist=list(mytuple)
 mylist[1]="grapes"
-tuple=tuple(mylist)
+mytuple=tuple(mylist)
 
-print(tuple)
+print(mytuple)
+
+for i in mytuple:
+    print(i)
+
+if 'apple' in mytuple:
+    print('Apple is there in the tuple!')
+else:
+    print('Apple isn\'t there in the tuple')
+
+print(len(mytuple))
+
+tuple2=('watermelon',)
+print(type(tuple2))
+
+tuple3=mytuple+tuple2
+print(tuple3)

@@ -1,0 +1,7 @@
+list = []
+for i in range(10):
+    x=input('Enter a value to add in the list: ')
+    list.append(x)
+
+for i in list:
+    print(i)

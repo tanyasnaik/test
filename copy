@@ -1,0 +1,15 @@
+list1 = [1,2,3,4,5]
+newlist = ['a','b','c','d','e']
+
+list2 = list1.copy()
+list3 = list(list1)
+
+#merged = list1 + newlist
+for i in newlist:
+    list1.append(i)
+#list1.extend(newlist)
+
+print(list1)
+print(list2)
+print(list3)
+#print(merged)

@@ -1,0 +1,7 @@
+mytuple=('apple','orange','banana')
+
+mylist=list(mytuple)
+mylist[1]="grapes"
+tuple=tuple(mylist)
+
+print(tuple)

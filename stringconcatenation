@@ -1,0 +1,18 @@
+
+a = ["M", "na", "i", "Ke"]
+b = ["y", "me", "s", "lly"]
+str=''
+for i in range(4):
+    str=str+a[i]+b[i]+' '
+print(str)
+
+
+
+
+i=0
+str=''
+while i<4:
+    str=str+a[i]+b[i]+' '
+    i=i+1
+print(str)
+

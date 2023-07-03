@@ -1,0 +1,13 @@
+numbers = []
+
+for i in range(10):
+    numb=int(input('Enter a number: '))
+    numbers.append(numb)
+
+print(numbers)
+
+sum=0
+for i in numbers:
+    sum=sum+i
+
+print(sum)

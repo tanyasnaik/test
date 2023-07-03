@@ -1,0 +1,8 @@
+numbers = [1, 2, 3, 4, 5, 6, 7]
+squares=[]
+for i in range(7):
+    a=numbers[i]*numbers[i]
+    squares.append(a)
+print(squares)
+
+#[1, 4, 9, 16, 25, 36, 49]

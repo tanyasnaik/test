@@ -15,7 +15,6 @@ class Audi(car):
     def printvalue(self):
         print('Audi class')
 
-
 obj1=BMW('BMW 7-series',30.43)
 obj1.descrip()
 

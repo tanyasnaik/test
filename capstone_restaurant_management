@@ -1,0 +1,73 @@
+menu={'Instant coffee': 100,
+              'Latte': 100,
+              'Cappuccino': 100,
+              'Black coffee': 100,
+              'Sandwich': 100,
+              'Cheese cake': 100,
+              'Strawberry mousse': 100,
+              'Chocolate cake': 100,
+              'Vegetable salad': 100,
+              'French fries': 100,
+              'Blueberry muffin': 100}
+
+class Cafe:
+    def __init__(self,name):
+        self.name=name
+    
+    def booktable(self):
+        urtable=int(input('Book a table for (number of people): '))
+        print(f'A table has been booked for {urtable} ppl')
+
+    def viewmenu(self):
+        for y in range(1):
+            for i,x in menu.items():
+                print(f'{y}. {i}:{x}')
+                y+=1
+
+    def orderitems(self):
+        bill={}
+        order=input('What items would you like to order? ')
+        order.split()
+        for one in order:
+            bill[menu[one]]=menu[one]
+
+                 
+
+
+        
+
+    def showbill(self):
+        print()
+
+        
+
+
+
+    
+         
+        
+def createCafe():
+    cafe=Cafe('cafename')
+    
+    
+    while True:
+        print('\n=====CAFÉ=====\n1. Book table\n2. View Menu\n3. Order items\n4. Show bill\n5. Exit')
+        
+        choice = int(input('Enter your choice: '))
+        if choice==1:
+            print()
+        elif choice==2:
+            print()
+            cafe.viewmenu()
+        elif choice==3:
+            print()
+            cafe.orderitems
+        elif choice==4:
+            print()
+        elif choice==5:
+            print('Goodbye!')
+        else:
+            print('Wrong choice!')
+
+if __name__ == '__main__':
+   createCafe()

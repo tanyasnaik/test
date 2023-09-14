@@ -14,7 +14,6 @@ WHITE=(255,255,255)
 
 snakesize=10
 snakelist=[]
-snakelength=1
 
 clock=pygame.time.Clock()
 screen=pygame.display.set_mode([WIDTH,HEIGHT])
@@ -31,7 +30,17 @@ def urscore(msg,color,xco,yco):
     mesg=score_style.render(msg,True,color)
     screen.blit(mesg,[xco,yco])
 
+def snakescore(score):
+    value=score_style.render(str(score),True,RED)
+    screen.blit(value,[70,15])
+
+
+def oursnake(snakesize,snakelist):
+    for i in snakelist:
+        pygame.draw.rect(screen,RED,(i[0],i[1],snakesize,snakesize))
+
 def gameloop():
+    snakelength=1
     x=0
     y=0
     x_new=300
@@ -57,6 +66,7 @@ def gameloop():
 
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
+                gameclose=False
                 gameover=True
             if event.type==pygame.KEYDOWN:
                 if event.key==pygame.K_LEFT:
@@ -86,20 +96,22 @@ def gameloop():
         if len(snakelist) > snakelength:
             del snakelist[0]
 
-        for x in snakelist[:-1]:
-            if x==snakehead:
+        for j in snakelist[:-1]:
+            if j==snakehead:
                 gameclose=True
             
         oursnake(snakesize,snakelist)
+        snakescore(snakelength-1)
 
         
         pygame.draw.rect(screen,YELLOW,(foodx,foody,snakesize,snakesize))
         if foodx==x_new and foody==y_new:
             foodx= round(random.randrange(0,WIDTH-snakesize)/10.0)*10.0
             foody=round(random.randrange(0,HEIGHT-snakesize)/10.0)*10.0
+            snakelength += 1
         urscore('Score: ',RED,15,15)
         pygame.display.update()
-        clock.tick(10)
+        clock.tick(15)
 
     pygame.quit()
     quit()

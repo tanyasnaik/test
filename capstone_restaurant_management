@@ -14,58 +14,42 @@ class Cafe:
     def __init__(self,name):
         self.name=name
     
-    def booktable(self):
+    def entercafe(self):
         urtable=int(input('Book a table for (number of people): '))
-        print(f'A table has been booked for {urtable} ppl')
+        if urtable > 10:
+            urtable=int(input('\nWe can only book a table upto 10 members.\nBook a table for: '))
+        
+        print(f'A table has been booked for {urtable} people.')
 
-    def viewmenu(self):
+        print('\n\n=====MENU=====\n')
         for y in range(1):
             for i,x in menu.items():
                 print(f'{y}. {i}:{x}')
                 y+=1
 
-    def orderitems(self):
-        #bill={}
-        
-        order=input('What items would you like to order? ')
-        order1=order.split()
-        print(order1)
-        
-        for i in order1:
-            menuindex=int(i)
-            res=list(menu.keys())
-            ser=list(menu.values())
-            print(res[menuindex],':',ser[menuindex])
-
+        res=list(menu.keys())
+        ser=list(menu.values())
+        bill={}
+        while True:
+            order=input('\nWhat would you like to order? (Enter the serial number): ')
             
-            
-
-
-    def showbill(self):
-        print()         
+            if order != '':
+                order1=int(order)
+                count=int(input('How many of them would you like to order? '))
+                bill[res[order1]]=ser[order1]*count
+            else:
+                break
         
-#def createcafe():
+        valuesum=0
+        print('\n======YOUR BILL======\n')
+        for key,value in bill.items():
+            print(key,':',value)
+            valuesum = value +valuesum
+        print(f'\nTotal amount to be paid: ₹{valuesum}')
+        
+
+        print('Thank you for visiting!')
+    
 cafe=Cafe('cafename')
-    
-    
-while True:
-    print('\n=====CAFÉ=====\n1. Book table\n2. View Menu\n3. Order items\n4. Show bill\n5. Exit')
-        
-    choice = int(input('Enter your choice: '))
-    if choice==1:
-        print()
-    elif choice==2:
-        print()
-        cafe.viewmenu()
-    elif choice==3:
-        print()
-        cafe.orderitems()
-    elif choice==4:
-        print()
-    elif choice==5:
-        print('Goodbye!')
-    else:
-        print('Wrong choice!')
-
-#if __name__ == '__main__':
-createcafe()
+print('\n=====PANGEA CAFÉ=====\n\nYou have entered the café.\n')
+cafe.entercafe()

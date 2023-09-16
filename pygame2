@@ -3,7 +3,7 @@ from os import path
 import random 
 WIDTH=800
 HEIGHT=600
-FPS=30
+FPS=30  
 
 WHITE=(255,255,255)
 BLACK=(0,0,0)
@@ -15,8 +15,8 @@ BLUE=(0,0,255)
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image=pygame.Surface((50,50))
-        self.image.fill(GREEN)
+        self.image=pygame.transform.scale(playerimg,(50,38))
+        self.image.set_colorkey(BLACK)
         self.rect=self.image.get_rect()
         self.rect.centerx=(WIDTH/2)
         self.rect.bottom=HEIGHT-20
@@ -38,13 +38,14 @@ class Player(pygame.sprite.Sprite):
         bullet=Bullet(self.rect.centerx,self.rect.top)
         allsprites.add(bullet) 
         bullets.add(bullet)
+        shootsound.play()
 
     
 class Mob(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image=pygame.Surface((30,40))
-        self.image.fill(RED)
+        self.image=meteorimg
+        self.image.set_colorkey(BLACK)
         self.rect=self.image.get_rect()
         self.rect.x=random.randrange(0,WIDTH-self.rect.width)
         self.rect.y=random.randrange(-100,-40)
@@ -62,8 +63,8 @@ class Mob(pygame.sprite.Sprite):
 class Bullet(pygame.sprite.Sprite):
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
-        self.image=pygame.Surface((10,20))
-        self.image.fill(WHITE)
+        self.image=bulletimg
+        self.image.set_colorkey(BLACK)
         self.rect=self.image.get_rect()
         self.rect.bottom=y
         self.rect.centerx=x
@@ -75,14 +76,25 @@ class Bullet(pygame.sprite.Sprite):
             self.kill()
 
 
-        
 imgdir=path.join(path.dirname(__file__),'img')
 snddir=path.join(path.dirname(__file__),'snd')
 
+
+        
+        
 pygame.init()
+pygame.mixer.init()
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption('My pygame')
 clock=pygame.time.Clock()
+
+bg=pygame.image.load(path.join(imgdir,'spaceimage.png')).convert()
+bgrect=bg.get_rect()
+playerimg=pygame.image.load(path.join(imgdir,"spaceship.png")).convert()
+meteorimg=pygame.image.load(path.join(imgdir,'stones.png')).convert()
+bulletimg=pygame.image.load(path.join(imgdir,'spacefile.png')).convert()
+
+shootsound=pygame.mixer.Sound(path.join(snddir,'Laser_Shoot4.wav'))
 
 allsprites=pygame.sprite.Group()
 mobs=pygame.sprite.Group()
@@ -118,6 +130,7 @@ while running:
     if hits:
         running=False
     screen.fill((0,255,255))
+    screen.blit(bg,bgrect)
     allsprites.draw(screen)
     pygame.display.flip()
 

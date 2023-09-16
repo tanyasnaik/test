@@ -25,49 +25,47 @@ class Cafe:
                 y+=1
 
     def orderitems(self):
-        bill={}
-        order=input('What items would you like to order? ')
-        order.split()
-        for one in order:
-            bill[menu[one]]=menu[one]
-
-                 
-
-
+        #bill={}
         
+        order=input('What items would you like to order? ')
+        order1=order.split()
+        print(order1)
+        
+        for i in order1:
+            menuindex=int(i)
+            res=list(menu.keys())
+            ser=list(menu.values())
+            print(res[menuindex],':',ser[menuindex])
+
+            
+            
+
 
     def showbill(self):
+        print()         
+        
+#def createcafe():
+cafe=Cafe('cafename')
+    
+    
+while True:
+    print('\n=====CAFÉ=====\n1. Book table\n2. View Menu\n3. Order items\n4. Show bill\n5. Exit')
+        
+    choice = int(input('Enter your choice: '))
+    if choice==1:
         print()
+    elif choice==2:
+        print()
+        cafe.viewmenu()
+    elif choice==3:
+        print()
+        cafe.orderitems()
+    elif choice==4:
+        print()
+    elif choice==5:
+        print('Goodbye!')
+    else:
+        print('Wrong choice!')
 
-        
-
-
-
-    
-         
-        
-def createCafe():
-    cafe=Cafe('cafename')
-    
-    
-    while True:
-        print('\n=====CAFÉ=====\n1. Book table\n2. View Menu\n3. Order items\n4. Show bill\n5. Exit')
-        
-        choice = int(input('Enter your choice: '))
-        if choice==1:
-            print()
-        elif choice==2:
-            print()
-            cafe.viewmenu()
-        elif choice==3:
-            print()
-            cafe.orderitems
-        elif choice==4:
-            print()
-        elif choice==5:
-            print('Goodbye!')
-        else:
-            print('Wrong choice!')
-
-if __name__ == '__main__':
-   createCafe()
+#if __name__ == '__main__':
+createcafe()

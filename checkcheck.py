@@ -12,3 +12,4 @@ menu={'Instant coffee': 100,
 res=list(menu.keys())
 ser=list(menu.values())
 print(res[1],':',ser[1])
+print(len(menu))

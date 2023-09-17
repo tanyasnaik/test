@@ -1,42 +1,44 @@
-menu={'Instant coffee': 100,
-              'Latte': 100,
-              'Cappuccino': 100,
-              'Black coffee': 100,
-              'Sandwich': 100,
-              'Cheese cake': 100,
-              'Strawberry mousse': 100,
-              'Chocolate cake': 100,
-              'Vegetable salad': 100,
-              'French fries': 100,
-              'Blueberry muffin': 100}
+menu={'Instant coffee': 110,
+              'Latte': 160,
+              'Cappuccino': 150,
+              'Black coffee': 115,
+              'Sandwich': 60,
+              'Cheese cake': 50,
+              'Strawberry mousse': 70,
+              'Chocolate cake': 65,
+              'Vegetable salad': 75,
+              'French fries': 80}
 
 class Cafe:
     def __init__(self,name):
         self.name=name
     
     def entercafe(self):
-        urtable=int(input('Book a table for (number of people): '))
+        urname=input('Enter your name: ')
+        print(f'Hi {urname}!')
+        urtable=int(input('\nBook a table for (number of people): '))
         if urtable > 10:
             urtable=int(input('\nWe can only book a table upto 10 members.\nBook a table for: '))
         
-        print(f'A table has been booked for {urtable} people.')
+        print(f'\nA table has been booked by {urname} for {urtable} people.')
 
         print('\n\n=====MENU=====\n')
         for y in range(1):
             for i,x in menu.items():
-                print(f'{y}. {i}:{x}')
                 y+=1
+                print(f'{y}. {i}:{x}')
+                
 
         res=list(menu.keys())
         ser=list(menu.values())
         bill={}
         while True:
-            order=input('\nWhat would you like to order? (Enter the serial number): ')
+            order=input('\nWhat would you like to order? (Enter the serial number/Press enter key to end order): ')
             
             if order != '':
                 order1=int(order)
-                count=int(input('How many of them would you like to order? '))
-                bill[res[order1]]=ser[order1]*count
+                count=int(input(f'How many {res[order1-1]}s would you like to order? '))
+                bill[res[order1-1]]=ser[order1-1]*count
             else:
                 break
         
@@ -45,11 +47,11 @@ class Cafe:
         for key,value in bill.items():
             print(key,':',value)
             valuesum = value +valuesum
-        print(f'\nTotal amount to be paid: ₹{valuesum}')
+        print(f'\nTotal amount to be paid for {len(bill)} items: ₹{valuesum}')
         
 
-        print('Thank you for visiting!')
+        print(f'\nThank you for visiting! Hope to see you again, {urname}!\n')
     
 cafe=Cafe('cafename')
-print('\n=====PANGEA CAFÉ=====\n\nYou have entered the café.\n')
+print('\n=====PANGEA CAFÉ=====\n\nYou have entered the café!\n')
 cafe.entercafe()

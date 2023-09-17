@@ -9,26 +9,30 @@ menu={'Instant coffee': 110,
               'Vegetable salad': 75,
               'French fries': 80}
 
+#create class
 class Cafe:
+    #initialising
     def __init__(self,name):
         self.name=name
     
     def entercafe(self):
+
         urname=input('Enter your name: ')
         print(f'Hi {urname}!')
+
         urtable=int(input('\nBook a table for (number of people): '))
         if urtable > 10:
             urtable=int(input('\nWe can only book a table upto 10 members.\nBook a table for: '))
-        
         print(f'\nA table has been booked by {urname} for {urtable} people.')
 
+        #print menu
         print('\n\n=====MENU=====\n')
         for y in range(1):
             for i,x in menu.items():
                 y+=1
                 print(f'{y}. {i}:{x}')
                 
-
+        #order from menu
         res=list(menu.keys())
         ser=list(menu.values())
         bill={}
@@ -42,6 +46,7 @@ class Cafe:
             else:
                 break
         
+        #print bill
         valuesum=0
         print('\n======YOUR BILL======\n')
         for key,value in bill.items():
@@ -49,9 +54,12 @@ class Cafe:
             valuesum = value +valuesum
         print(f'\nTotal amount to be paid for {len(bill)} items: ₹{valuesum}')
         
-
+        #conclude
         print(f'\nThank you for visiting! Hope to see you again, {urname}!\n')
-    
+
+#object of class
 cafe=Cafe('cafename')
 print('\n=====PANGEA CAFÉ=====\n\nYou have entered the café!\n')
+
+#call a function
 cafe.entercafe()
